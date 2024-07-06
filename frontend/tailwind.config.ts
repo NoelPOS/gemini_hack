@@ -23,6 +23,7 @@ const config: Config = {
         },
         pink: {
           100: "#FF37FF",
+          200: "#D315C4",
         },
         green: {
           100: "#17921B",
