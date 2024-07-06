@@ -21,7 +21,7 @@ const ReadingGenerate = (props: Props) => {
       </div>
       <div className="mb-12">
         <div className="bg-purple-400 w-[720px] h-[500px] p-4 rounded-tr-3xl rounded-bl-3xl border-2 border-pink-100">
-          <div className="flex justify-end flex-col p-8 ml-20">
+          <div className="flex justify-end flex-col p-8 ml-16">
             <p className="text-white text-4xl pt-4">
               AI will now generate a 
             </p>  
