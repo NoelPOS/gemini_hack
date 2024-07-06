@@ -30,6 +30,9 @@ const config = {
           300: "#6A2ADF",
           400: "#281549",
           500: "#7957AD",
+          600: "#A588CA",
+          700: "#593356",
+          800: "#280E51",
         },
         pink: {
           100: "#FF37FF",
@@ -38,6 +41,9 @@ const config = {
         },
         green: {
           100: "#17921B",
+        },
+        indigo: {
+          100: "#616D96",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
