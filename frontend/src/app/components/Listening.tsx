@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react'
+import ListeningAudio from './Listening/ListeningAudio'
 
-type Props = {};
+type Props = {}
 
 function Listening({}: Props) {
-  return <div className="text-pink-100"></div>;
+  return <ListeningAudio />
 }
 
-export default Listening;
+export default Listening
