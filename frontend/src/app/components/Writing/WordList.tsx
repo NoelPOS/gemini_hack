@@ -12,7 +12,7 @@ const WordList = (props: Props) => {
 
         <div>
           <div className="flex">
-            <div>Word</div>
+            <div className="">Word</div>
             <div>Word</div>
           </div>
         </div>
