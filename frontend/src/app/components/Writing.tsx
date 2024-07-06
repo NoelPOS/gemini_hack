@@ -2,7 +2,7 @@ import React from "react";
 import WordList from "./Writing/WordList";
 import Question from "./Writing/Question";
 import TextInputArea from "./Writing/TextInputArea";
-// import AiFeedback from "./Writing/AiFeedback";
+import AiFeedback from "./Writing/AiFeedback";
 
 type Props = {};
 
@@ -14,7 +14,7 @@ function Writing({}: Props) {
         <Question />
       </div>
       <TextInputArea />
-      {/* <AiFeedback /> */}
+      <AiFeedback />
     </div>
   );
 }
