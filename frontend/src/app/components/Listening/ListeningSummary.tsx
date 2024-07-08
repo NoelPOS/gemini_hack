@@ -2,12 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import mainRobot from '../../assets/img/mainRobot.png'
 
-interface Props {
-  practice: boolean
-  setPractice: Dispatch<SetStateAction<boolean>>
-}
-
-const WritingPractice = (props: Props) => {
+const ListeningSummary = () => {
   return (
     <div className='text-white bg-purple-200 flex items-center justify-center w-full h-[66vh]'>
       <div className='flex flex-row gap-20 items-center justify-center py-8'>
@@ -32,4 +27,4 @@ const WritingPractice = (props: Props) => {
   )
 }
 
-export default WritingPractice
+export default ListeningSummary

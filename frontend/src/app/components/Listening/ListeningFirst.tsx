@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
-import readingRobot from '../../assets/img/readingRobot.png'
+import robotListening from '../../assets/img/robotListening.png'
 
 interface Props {
   start: boolean
@@ -9,13 +9,13 @@ interface Props {
   setPractice: Dispatch<SetStateAction<boolean>>
 }
 
-const WritingFirst = (props: Props) => {
+const ListeningFirst = (props: Props) => {
   return (
     <div className='text-white bg-purple-200 flex items-center justify-center w-full '>
       <div className='flex flex-row gap-20 items-center justify-center py-8'>
         <div className='flex flex-col gap-2 items-center justify-center '>
           <Image
-            src={readingRobot}
+            src={robotListening}
             width={200}
             height={200}
             alt='Picture of the author'
@@ -41,4 +41,4 @@ const WritingFirst = (props: Props) => {
   )
 }
 
-export default WritingFirst
+export default ListeningFirst
