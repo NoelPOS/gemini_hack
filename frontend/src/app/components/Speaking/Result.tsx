@@ -4,9 +4,10 @@ import images from "../../../../constants/images";
 
 type Props = {
   status: string;
+  transcript: string;
 };
 
-const Result = ({ status }: Props) => {
+const Result = ({ status, transcript }: Props) => {
   const statusMapping = {
     success: {
       img: images.smile_2,
@@ -33,7 +34,9 @@ const Result = ({ status }: Props) => {
         />
       </div>
       <div className="bg-white  w-96 h-64 p-10 rounded-bl-xl rounded-tr-xl flex flex-col lg:flex-row items-center justify-center space-y-4 lg:space-y-0 lg:space-x-4">
-        <p className="text-black text-center text-3xl font-bold">{text}</p>
+        <p className="text-black text-center text-sm font-bold">
+          {transcript === "" ? text : transcript}
+        </p>
         <Image
           src={img2}
           alt="smile"

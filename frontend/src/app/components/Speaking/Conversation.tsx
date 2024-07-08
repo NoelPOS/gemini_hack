@@ -9,9 +9,13 @@ type Message = {
 
 type ConversationProps = {
   messages: Message[];
+  currentSpeakingMessage: string;
 };
 
-const Conversation = ({ messages }: ConversationProps) => {
+const Conversation = ({
+  messages,
+  currentSpeakingMessage,
+}: ConversationProps) => {
   return (
     <main className="flex-1 overflow-y-auto p-4 space-y-4">
       {messages.map((message, index) => (
@@ -30,7 +34,15 @@ const Conversation = ({ messages }: ConversationProps) => {
           <div
             className={`p-2 rounded-bl-xl rounded-tr-xl border-2 border-teal-900 bg-gray-100`}
           >
-            <p className="text-lg text-purple-700 font-bold">{message.text}</p>
+            <p
+              className="text-lg text-purple-700 font-bold"
+              style={{
+                color:
+                  message.text === currentSpeakingMessage ? "red" : "black",
+              }}
+            >
+              {message.text}
+            </p>
           </div>
           {message.fromSelf && (
             <Avatar>
