@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.14.1",
     "@radix-ui/react-avatar": "^1.1.0",
     "@types/dom-speech-recognition": "^0.0.4",
     "class-variance-authority": "^0.7.0",
