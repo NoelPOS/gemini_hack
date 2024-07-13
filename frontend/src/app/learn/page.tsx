@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import Listening from "../components/Listening";
 import Reading from "../components/Reading";
 import Writing from "../components/Writing";
@@ -12,6 +12,50 @@ import Image from "next/image";
 
 export default function Learn() {
   const [skill, setSkill] = useState("Listening");
+  const [words, setWords] = useState([]);
+
+  const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+  const api = process.env.NEXT_PUBLIC_PUBLICAPI_KEY;
+  const genAI = new GoogleGenerativeAI(api);
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-pro",
+    generationConfig: {
+      responseMimeType: "application/json",
+      responseSchema: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            word: {
+              type: "string",
+            },
+            definition: {
+              type: "string",
+            },
+            example_sentence: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  const gen = async () => {
+    let prompt =
+      "List 10 words with definition and example sentence of your choice: C1 level.";
+    let result = await model.generateContent(prompt);
+    let wordsArray = JSON.parse(result.response.text());
+    setWords(wordsArray);
+  };
+
+  useEffect(() => {
+    console.log(words);
+  }, [words]);
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-purple-600 to-blue-100">
@@ -19,6 +63,7 @@ export default function Learn() {
         <p className="text-slate-800">Learn page</p>
         <div className="flex gap-10 justify-center items-center gap-4">
           <div className="text-slate-800 relative">
+            <button onClick={gen}>Generate</button>
             <button onClick={() => setSkill("Listening")}>
               <div style={{ filter: "brightness(50%)" }}>
                 <Image
