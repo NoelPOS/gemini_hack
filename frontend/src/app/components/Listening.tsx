@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { useState } from 'react'
 import ListeningAudio from './Listening/ListeningAudio'
 import ListeningFirst from './Listening/ListeningFirst'
 import ListeningQuiz from './Listening/ListeningQuiz'
 import ListeningSummary from './Listening/ListeningSummary'
 
-type Props = {}
+type Props = {
+  text: string
+  setText: Dispatch<SetStateAction<string>>
+}
 
-function Listening({}: Props) {
+function Listening(props: Props) {
   const [start, setStart] = useState(true)
   const [practice, setPractice] = useState(false)
   const [survey, setSurvey] = useState(false)
@@ -23,6 +26,8 @@ function Listening({}: Props) {
     )) ||
     (practice && (
       <ListeningAudio
+        text={props.text}
+        setText={props.setText}
         practice={practice}
         setPractice={setPractice}
         survey={survey}
@@ -31,6 +36,8 @@ function Listening({}: Props) {
     )) ||
     (survey && (
       <ListeningQuiz
+        text={props.text}
+        setText={props.setText}
         survey={survey}
         setSurvey={setSurvey}
         summary={summary}

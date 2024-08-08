@@ -1,8 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import mainRobot from '../../assets/img/mainRobot.png'
+import { useRouter } from 'next/navigation'
 
 const ListeningSummary = () => {
+  const router = useRouter()
   return (
     <div className='text-white bg-purple-200 flex items-center justify-center w-full h-[66vh]'>
       <div className='flex flex-row gap-20 items-center justify-center py-8'>
@@ -18,7 +20,10 @@ const ListeningSummary = () => {
           <p className='text-center bg-white text-black p-10 py-20 rounded-xl '>
             Well done User! Your writing has been improved!
           </p>
-          <button className='btn bg-purple-300 px-2 rounded-lg px-6 py-2'>
+          <button
+            onClick={() => router.push('./')}
+            className='btn bg-purple-300 px-2 rounded-lg px-6 py-2'
+          >
             Back to Menu
           </button>
         </div>

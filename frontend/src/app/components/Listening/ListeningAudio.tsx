@@ -1,14 +1,41 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import Image from 'next/image'
 import mainRobot from '../../assets/img/mainRobot.png'
 
+import axios from 'axios'
+
 interface Props {
+  text: string
+  setText: Dispatch<SetStateAction<string>>
   practice: boolean
   setPractice: Dispatch<SetStateAction<boolean>>
   survey: boolean
   setSurvey: Dispatch<SetStateAction<boolean>>
 }
+
+async function something(str: string) {
+  const input = str
+  const response = await axios.post('http://localhost:3001/synthesize', {
+    input,
+  })
+  const result = `data:audio/mp3;base64,${response.data.audioContent}`
+  return result
+}
+
 const ListeningAudio = (props: Props) => {
+  const [audioSrc, setAudioSrc] = React.useState('')
+  const [para, setPara] = React.useState(props.text)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log(para)
+      const result = await something(para)
+      setAudioSrc(result)
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <div className='text-white bg-purple-200 flex items-center justify-center w-full h-[66vh]'>
       <div className='flex flex-row gap-20 items-center justify-center py-8'>
@@ -30,10 +57,8 @@ const ListeningAudio = (props: Props) => {
           </button>
         </div>
         <div className='flex flex-col gap-4 items-center justify-center   bg-purple-400 w-[500px] h-[300px] border-2 rounded-tr-3xl rounded-bl-3xl border-pink-200 px-10'>
-          <audio controls src='' />
-          <p className='text-center bg-white text-black p-10 py-20 rounded-xl '>
-            Well done User! Your writing has been improved!
-          </p>
+          <audio controls src={audioSrc} />
+          <p className='text-center bg-white text-black p-10 py-20 rounded-xl '></p>
         </div>
       </div>
     </div>
