@@ -1,16 +1,17 @@
-import React from 'react'
-import { useState } from 'react'
-import WordList from './Writing/WordList'
-import WritingFirst from './Writing/WritingFirst'
-import WritingSummary from './Writing/WritingSummary'
-import WritingQuestion from './Writing/WritingQuestion'
+import React from "react";
+import { useState } from "react";
+import WritingFirst from "./Writing/WritingFirst";
+import WritingSummary from "./Writing/WritingSummary";
+import WritingQuestion from "./Writing/WritingQuestion";
 
-type Props = {}
+type Props = {
+  words: any;
+};
 
-function Writing({}: Props) {
-  const [start, setStart] = useState(true)
-  const [practice, setPractice] = useState(false)
-  const [summary, setSummary] = useState(false)
+function Writing({ words }: Props) {
+  const [start, setStart] = useState(true);
+  const [practice, setPractice] = useState(false);
+  const [summary, setSummary] = useState(false);
   return (
     (start && (
       <WritingFirst
@@ -26,10 +27,11 @@ function Writing({}: Props) {
         setPractice={setPractice}
         summary={summary}
         setSummary={setSummary}
+        words={words}
       />
     )) ||
     (summary && <WritingSummary />)
-  )
+  );
 }
 
-export default Writing
+export default Writing;

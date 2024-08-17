@@ -6,6 +6,7 @@ import smile_2 from "../assets/images/Smile_2.svg";
 import suprise_1 from "../assets/images/suprise_1.svg";
 import try_again_1 from "../assets/images/try_again_1.svg";
 import robot_reading from "../assets/images/robot_reading 4.svg";
+import robotgen from "../assets/images/robotGen.svg";
 
 export default {
   robot_reading,
@@ -16,4 +17,5 @@ export default {
   smile_2,
   suprise_1,
   try_again_1,
+  robotgen,
 };
