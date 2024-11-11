@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
-import getwords from '../model/model'
+import getwords from '../model/model.ts'
 
 // Assume these components are defined in separate files
 import Listening from '../components/Listening'
@@ -62,14 +62,13 @@ export default function Learn() {
       const result = await getwords(level)
       const wordsArray: Word[] = JSON.parse(result.response.text())
       setWords(wordsArray)
-      console.log(wordsArray)
-
-      // const wordsList = wordsArray.map((word) => word.word).join(', ')
-      // const model2 = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-      // const result2 = await model2.generateContent(
-      //   `Give me back a paragraph based on the following words: ${wordsList}. The paragraph should make sense and be coherent and about 200 words long.`
-      // )
-      // setText(result2.response.text())
+      // console.log(wordsArray)
+      const wordsList = wordsArray.map((word) => word.word).join(', ')
+      const model2 = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+      const result2 = await model2.generateContent(
+        `Give me back a paragraph based on the following words: ${wordsList}. The paragraph should make sense and be coherent and about 200 words long.`
+      )
+      setText(result2.response.text())
     } catch (error) {
       console.error('Error generating content:', error)
     } finally {
